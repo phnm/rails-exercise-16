@@ -10,4 +10,9 @@ describe "Authors page", :type => :feature do
   	visit "authors/new"
   	expect(page).to have_field("first_name")
   end
+
+  it "should have a 'Create Author' button" do
+  	visit "authors/new"
+  	expect(page).to have_button("create_author")
+  end
 end
