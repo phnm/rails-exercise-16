@@ -1,16 +1,19 @@
 <h1>New Author</h1>
-<%= form_for :author do %>
+<%= form_for :author do |f| %>
   <p>
-    <%= label_tag :first_name %><br>
-    <%= text_field_tag :first_name %>
+    <%= f.label :first_name %><br>
+    <%= f.text_field :first_name %>
   </p>
   <p>
-    <%= label_tag :last_name %><br>
-    <%= text_field_tag :last_name %>
+    <%= f.label :last_name %><br>
+    <%= f.text_field :last_name %>
   </p>
   <p>
-    <%= label_tag :homepage %><br>
-    <%= text_field_tag :homepage %>
+    <%= f.label :homepage %><br>
+    <%= f.text_field :homepage %>
+  </p>
+  <p>
+  	<%= f.submit %>
   </p>
  
 <% end %>
