@@ -1,19 +1,16 @@
 <h1>New Author</h1>
 <%= form_for :author do |f| %>
   <p>
-    <%= f.label :first_name %><br>
-    <%= f.text_field :first_name %>
+    <%= f.text_field(:first_name, placeholder: 'First Name') %>
   </p>
   <p>
-    <%= f.label :last_name %><br>
-    <%= f.text_field :last_name %>
+    <%= f.text_field(:last_name, placeholder: 'Last Name') %>
   </p>
   <p>
-    <%= f.label :homepage %><br>
-    <%= f.text_field :homepage %>
+    <%= f.text_field(:homepage, placeholder: 'Homepage') %>
   </p>
   <p>
-  	<%= f.submit %>
+  	<%= f.submit "Create Author" %>
   </p>
  
 <% end %>

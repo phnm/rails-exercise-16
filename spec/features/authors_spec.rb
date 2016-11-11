@@ -8,11 +8,11 @@ describe "Authors page", :type => :feature do
 
   it "should have a field 'First name'" do
   	visit "authors/new"
-  	expect(page).to have_field("first_name")
+  	expect(page).to have_field("author_first_name")
   end
 
   it "should have a 'Create Author' button" do
   	visit "authors/new"
-  	expect(page).to have_button("create_author")
+  	expect(page).to have_button("Create Author")
   end
 end
