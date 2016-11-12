@@ -6,9 +6,11 @@ describe "Authors page", :type => :feature do
     visit "authors/new"
   end
 
-  it "should have a field 'First name'" do
+  it "should have three fields: 'first name', 'last name', 'homepage'" do
   	visit "authors/new"
-  	expect(page).to have_field("author_first_name")
+    expect(page).to have_field('author_first_name')
+    expect(page).to have_field('author_last_name')
+    expect(page).to have_field('author_homepage')
   end
 
   it "should have a 'Create Author' button" do
