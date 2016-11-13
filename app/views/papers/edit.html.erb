@@ -24,6 +24,12 @@
   <p>
     <%= f.text_field(:year, placeholder: 'Year') %>
   </p>
+
+  <% (1..5).each do |i| %>
+      <%= f.label "Author #{i}" %>
+      <%= f.collection_select(:author_ids, Author.all, :id, :name, {selected: @paper.author_ids[i-1], include_blank: '(none)'}, {id: "paper_Author #{i}"}) %>
+      </br>
+  <% end %>
   <p>
   	<%= f.submit "Update Paper" %>
   </p>

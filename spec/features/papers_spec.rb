@@ -100,6 +100,13 @@ describe "Paper edit page" do
     click_button "Update Paper"
     Paper.where(title: "Random Title", venue: "Mind 49: 433-460").take!
   end
+
+
+  it "should have 5 drop down menus for Authors" do
+    (1..5).each do |i|
+      expect(page).to have_select("Author #{i}")
+    end
+  end
 end
 
 describe "Paper detail page" do
