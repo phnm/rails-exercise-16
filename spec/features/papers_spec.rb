@@ -60,4 +60,29 @@ describe "Papers index page" do
     expect(page).to have_link('Show', href: paper_path(@paper))
   end
 
+  it "should link to paper edit page" do
+  	@paper = build(:paper)
+    @paper.save
+    visit papers_path
+    expect(page).to have_link('Edit', href: edit_paper_path(@paper))
+  end
+
+end
+
+describe "Paper edit page" do
+  before :each do
+    @paper = build(:paper)
+    @paper.save
+    visit edit_paper_path(@paper)
+  end
+
+  it "should render" do
+    visit edit_paper_path(@paper)
+  end
+
+  it "should save edited papers" do
+    fill_in "Title", with: "Random Title"
+    click_button "Update Paper"
+    Paper.where(title: "Random Title", venue: "Mind 49: 433-460").take!
+  end
 end
