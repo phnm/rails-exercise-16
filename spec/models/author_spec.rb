@@ -6,6 +6,7 @@ RSpec.describe Author, type: :model do
   end
 
   it "should not validate without last name" do
-    expect(Author.new(first_name: "alan", last_name: "", homepage: "http://example.com")).not_to be_valid
+    expect(Author.new(first_name: "alan", last_name: nil, homepage: "http://example.com").save).to be false
+    expect(Author.new(first_name: "alan", last_name: "", homepage: "http://example.com").save).to be false
   end
 end

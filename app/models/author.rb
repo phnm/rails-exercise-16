@@ -3,5 +3,5 @@ class Author < ActiveRecord::Base
 		return first_name + ' ' + last_name
 	end
 
-	validates :last_name, presence: true, length: { minimum: 1 }
+	validates :last_name, presence: true
 end
