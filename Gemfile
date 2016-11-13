@@ -12,6 +12,8 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.3'
   gem 'capybara', '~> 2.5'
   gem 'factory_girl_rails', '~> 4.5'
+  gem 'jquery-rails'
+  gem 'turbolinks'
 end
 
 group :development do

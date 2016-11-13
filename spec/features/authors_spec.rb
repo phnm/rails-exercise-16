@@ -80,6 +80,14 @@ describe "Authors index page" do
     visit authors_path
     expect(page).to have_link('Destroy', href: author_path(@author))
   end
+
+  it "should delete the author when clicked on Destroy" do
+  	@author = build(:author)
+    @author.save
+    visit authors_path
+    click_on('Destroy')
+    expect(Author.all).to be_empty
+  end
 end
 
 describe "Authors edit page" do
