@@ -66,15 +66,29 @@ describe "Authors index page" do
     visit authors_path
     expect(page).to have_link('Show', href: author_path(@author))
   end
+
+  it "should link to author edit page" do
+  	@author = build(:author)
+    @author.save
+    visit authors_path
+    expect(page).to have_link('Edit', href: edit_author_path(@author))
+  end
 end
 
 describe "Authors edit page" do
   before :each do
     @author = build(:author)
     @author.save
+    visit edit_author_path(@author)
   end
 
   it "should render" do
     visit edit_author_path(@author)
+  end
+
+  it "should save edited authors" do
+    fill_in "First name", with: "Alan Mathison"
+    click_button "Update Author"
+    Author.where(first_name: "Alan Mathison", last_name: "Turing").take!
   end
 end
