@@ -73,6 +73,13 @@ describe "Authors index page" do
     visit authors_path
     expect(page).to have_link('Edit', href: edit_author_path(@author))
   end
+
+  it "should have a link to delete an author" do
+  	@author = build(:author)
+    @author.save
+    visit authors_path
+    expect(page).to have_link('Destroy', href: author_path(@author))
+  end
 end
 
 describe "Authors edit page" do
