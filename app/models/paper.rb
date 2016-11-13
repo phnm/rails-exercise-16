@@ -1,5 +1,5 @@
 class Paper < ActiveRecord::Base
   belongs_to :authors
 
-  validates :title, presence: true
+  validates :title, :venue, presence: true
 end
