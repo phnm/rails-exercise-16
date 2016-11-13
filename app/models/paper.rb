@@ -3,4 +3,5 @@ class Paper < ActiveRecord::Base
 
   validates :title, :venue, presence: true
   validates :year, numericality: { only_integer: true }
+  scope :year_eq, -> (y) { where("year = ?", y) }
 end
