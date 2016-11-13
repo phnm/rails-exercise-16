@@ -49,6 +49,6 @@ describe "Authors index page" do
 
   it "should have a link to add a new author" do
   	visit "authors"
-  	expect(page).to have_link('Add author', href: "authors/new")
+  	expect(page).to have_link('Add author', href: new_author_path)
   end
 end
