@@ -39,10 +39,11 @@ describe "Authors index page" do
 	visit "authors"
   end
 
-  it "should contain a list of authors" do
+  it "should contain a list of authors with name and homepage" do
   	@author = build(:author)
   	@author.save
   	visit "authors"
   	expect(page).to have_text(@author.name)
+  	expect(page).to have_link(@author.homepage)
   end
 end

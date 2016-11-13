@@ -3,12 +3,13 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>Homepage</th>
   </tr>
  
   <% @authors.each do |a| %>
     <tr>
       <td><%= a.name %></td>
-
+      <td><%= link_to a.homepage, a.homepage %></td>
     </tr>
   <% end %>
 </table>
