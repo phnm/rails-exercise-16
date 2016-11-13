@@ -1,0 +1,31 @@
+<h1>Edit Author</h1>
+<%= form_for :author, url: author_path(@author), method: :patch do |f| %>
+
+  <% if @author.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@author.errors.count, "error") %> prohibited
+        this author from being saved:
+      </h2>
+      <ul>
+        <% @author.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.text_field(:first_name, placeholder: 'First name') %>
+  </p>
+  <p>
+    <%= f.text_field(:last_name, placeholder: 'Last name') %>
+  </p>
+  <p>
+    <%= f.text_field(:homepage, placeholder: 'Homepage') %>
+  </p>
+  <p>
+  	<%= f.submit "Update Author" %>
+  </p>
+ 
+<% end %>

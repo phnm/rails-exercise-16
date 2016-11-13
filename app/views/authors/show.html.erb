@@ -1,3 +1,5 @@
 <p>First name: <%= @author.first_name %></p>
 <p>Last name: <%= @author.last_name %></p>
 <p>Homepage: <%= @author.homepage %></p>
+
+<%= link_to 'Edit', edit_author_path(@author) %>
