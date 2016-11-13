@@ -23,7 +23,7 @@ describe "Authors new page", :type => :feature do
     expect(@author).not_to be_nil
   end
 
-  it "should be found in database" do
+  it "form data should be found in database after submit" do
   	visit "authors/new"
   	@author = build(:author)
   	fill_in "First name", with: @author.first_name
@@ -31,6 +31,10 @@ describe "Authors new page", :type => :feature do
   	fill_in "Homepage", with: @author.homepage
   	click_button "Create Author"
   	expect(Author.find_by(first_name: @author.first_name, last_name: @author.last_name, homepage: @author.homepage)).not_to be_nil
+  end
+
+  it "should not validate without last name" do
+    expect(Author.new(first_name: "alan", last_name: "", homepage: "http://example.com")).not_to be_valid
   end
 end
 
