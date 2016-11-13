@@ -82,6 +82,15 @@ describe "Papers index page" do
     expect(Paper.all).to be_empty
   end
 
+  it "should filter by year" do
+    Paper.new(title: "QWERTZUI", venue: "Paper Venue", year: 1968).save
+    @paper = build(:paper)
+    @paper.save
+    visit papers_path + "?year=1950"
+    expect(page).not_to have_text("QWERTZUI")
+    expect(page).to have_text(@paper.title)
+  end
+
 end
 
 describe "Paper edit page" do
@@ -115,7 +124,20 @@ describe "Paper detail page" do
     	@paper.save
 		visit paper_path(@paper)
 	    @paper.authors.each do |a|
-	    expect(page).to have_text "#{a.name}"
+	    	expect(page).to have_text "#{a.name}"
 	    end
+	end
+
+  	it "should save selected authors" do
+  		@author = build(:author)
+    	@author.save
+		@paper = build(:paper)
+    	@paper.save
+    	@peter = Author.new(first_name: "Peter", last_name: "Plagiarist")
+    	@peter.save
+    	visit edit_paper_path(@paper)
+    	select(@peter.name, from: "paper_Author 1")
+    	click_button 'Update Paper'
+    	expect(Paper.take!.authors).to eq [@peter]
 	end
 end
