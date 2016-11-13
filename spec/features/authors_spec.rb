@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe "Authors page", :type => :feature do
+describe "Authors new page", :type => :feature do
   
   it "should render" do
     visit "authors/new"
@@ -31,5 +31,11 @@ describe "Authors page", :type => :feature do
   	fill_in "Homepage", with: @author.homepage
   	click_button "Create Author"
   	expect(Author.find_by(first_name: @author.first_name, last_name: @author.last_name, homepage: @author.homepage)).not_to be_nil
+  end
+end
+
+describe "Authors index page" do
+  it "should render" do
+	visit "authors"
   end
 end
