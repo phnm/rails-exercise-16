@@ -52,4 +52,12 @@ describe "Papers index page" do
   	expect(page).to have_text(@paper.venue)
   	expect(page).to have_text(@paper.year)
   end
+
+  it "should show a link to the paper page" do
+    @paper = build(:paper)
+    @paper.save
+    visit papers_path
+    expect(page).to have_link('Show', href: paper_path(@paper))
+  end
+
 end
