@@ -51,4 +51,11 @@ describe "Authors index page" do
   	visit "authors"
   	expect(page).to have_link('Add author', href: new_author_path)
   end
+
+  it "should contain a link to the author page" do
+    @author = build(:author)
+    @author.save
+    visit authors_path
+    expect(page).to have_link('Show', href: author_path(@author))
+  end
 end
