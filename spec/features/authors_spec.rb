@@ -32,6 +32,14 @@ describe "Authors new page", :type => :feature do
   	click_button "Create Author"
   	expect(Author.find_by(first_name: @author.first_name, last_name: @author.last_name, homepage: @author.homepage)).not_to be_nil
   end
+
+  it "should report that last name can't be blank" do
+  	visit "authors/new"
+  	fill_in "First name", with: "Alan"
+    fill_in "Homepage", with: "Rickman.de"
+    click_button "Create Author"
+    expect(page).to have_text ("Last name can't be blank")
+  end
 end
 
 describe "Authors index page" do
