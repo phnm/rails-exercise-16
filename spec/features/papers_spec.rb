@@ -67,6 +67,21 @@ describe "Papers index page" do
     expect(page).to have_link('Edit', href: edit_paper_path(@paper))
   end
 
+  it "should have a link to delete a paper" do
+  	@paper = build(:paper)
+    @paper.save
+    visit papers_path
+    expect(page).to have_link('Destroy', href: paper_path(@paper))
+  end
+
+  it "should delete the paper when clicked on Destroy" do
+  	@paper = build(:paper)
+    @paper.save
+    visit papers_path
+    click_on('Destroy')
+    expect(Paper.all).to be_empty
+  end
+
 end
 
 describe "Paper edit page" do

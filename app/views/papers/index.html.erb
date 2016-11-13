@@ -14,7 +14,7 @@
       <td><%= p.year %></td>
       <td><%= link_to 'Show', paper_path(p) %></td>
       <td><%= link_to 'Edit', edit_paper_path(p) %></td>
-
+      <td><%= link_to 'Destroy', paper_path(p), method: :delete, data: { confirm: 'Are you sure?' } %></td>
     </tr>
   <% end %>
 </table>
