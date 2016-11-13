@@ -46,4 +46,9 @@ describe "Authors index page" do
   	expect(page).to have_text(@author.name)
   	expect(page).to have_link(@author.homepage)
   end
+
+  it "should have a link to add a new author" do
+  	visit "authors"
+  	expect(page).to have_link('Add author', href: "authors/new")
+  end
 end
