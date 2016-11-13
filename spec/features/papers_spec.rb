@@ -101,3 +101,14 @@ describe "Paper edit page" do
     Paper.where(title: "Random Title", venue: "Mind 49: 433-460").take!
   end
 end
+
+describe "Paper detail page" do
+	it "should show the author's name" do
+		@paper = build(:paper)
+    	@paper.save
+		visit paper_path(@paper)
+	    @paper.authors.each do |a|
+	    expect(page).to have_text "#{a.name}"
+	    end
+	end
+end
