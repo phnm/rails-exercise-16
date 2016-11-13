@@ -67,3 +67,14 @@ describe "Authors index page" do
     expect(page).to have_link('Show', href: author_path(@author))
   end
 end
+
+describe "Authors edit page" do
+  before :each do
+    @author = build(:author)
+    @author.save
+  end
+
+  it "should render" do
+    visit edit_author_path(@author)
+  end
+end
