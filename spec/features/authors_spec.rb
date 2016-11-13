@@ -32,10 +32,6 @@ describe "Authors new page", :type => :feature do
   	click_button "Create Author"
   	expect(Author.find_by(first_name: @author.first_name, last_name: @author.last_name, homepage: @author.homepage)).not_to be_nil
   end
-
-  it "should not validate without last name" do
-    expect(Author.new(first_name: "alan", last_name: "", homepage: "http://example.com")).not_to be_valid
-  end
 end
 
 describe "Authors index page" do
