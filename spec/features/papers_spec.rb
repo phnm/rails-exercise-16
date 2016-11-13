@@ -31,10 +31,10 @@ describe "Paper new page", :type => :feature do
   	expect(Paper.find_by(title: @paper.title, venue: @paper.venue, year: @paper.year)).not_to be_nil
   end
 
-  it "should report that title can't be blank" do
+  it "should report that title or venue can't be blank" do
   	visit "papers/new"
-  	fill_in "Venue", with: "QWER"
     click_button "Create Paper"
     expect(page).to have_text ("Title can't be blank")
+    expect(page).to have_text ("Venue can't be blank")
   end
 end
