@@ -38,3 +38,18 @@ describe "Paper new page", :type => :feature do
     expect(page).to have_text ("Venue can't be blank")
   end
 end
+
+describe "Papers index page" do
+  it "should render" do
+	visit "papers"
+  end
+
+  it "should contain a list of all papers with title, venue and year" do
+  	@paper = build(:paper)
+  	@paper.save
+  	visit "papers"
+  	expect(page).to have_text(@paper.title)
+  	expect(page).to have_text(@paper.venue)
+  	expect(page).to have_text(@paper.year)
+  end
+end
